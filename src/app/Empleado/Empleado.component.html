@@ -1,0 +1,78 @@
+
+{{titulo}}
+<hr/>
+<h3>Uso de directiva *ngIf</h3>
+<div *ngIf="trabajador_externo == true">
+	<button (click)="cambiarExterno(false)">Mostrar empleado</button>
+	<ul>
+		<li> {{employees[0].nombre}}</li>
+		<li> {{employees[0].edad}}</li>
+		<li>  {{employees[0].cargo}}</li>
+		<li *ngIf="employees[0].contratado==true"> Está contratado</li>
+		<li *ngIf="employees[0].contratado==false"> No está contratado</li>
+	</ul>
+</div>
+
+<div *ngIf="trabajador_externo == false">
+	<button (click)="cambiarExterno(true)">Mostrar empleado</button>
+	<ul>
+		<li> {{empleado.nombre}}</li>
+		<li> {{empleado.edad}}</li>
+		<li> {{empleado.cargo}}</li>
+		<li *ngIf="empleado.contratado==true">Está contratado</li>
+		<li *ngIf="empleado.contratado==false">No esta contratado</li>
+	</ul>
+</div>
+<hr/>
+<h3> Listado de empleados con diretiva *ngFor</h3>
+<ul>
+	<li *ngFor="let empleado of employees; let i = index">
+		<strong>Empleado {{i}}:</strong>
+		<ul>
+			<li> {{empleado.nombre}}</li>
+			<li> {{empleado.edad}}</li>
+			<li> {{empleado.cargo}}</li>
+			<li *ngIf="empleado.contratado==true">Está contratado</li>
+			<li *ngIf="empleado.contratado==false">No esta contratado</li>
+		</ul>	
+	</li>
+</ul>
+<hr/>
+<h3>Uso de directivas [ngSwicth]-*ngSwitch y [ngStyle]  </h3>
+<ul [ngSwitch]="color">
+	<li *ngSwitchCase ="'red'" [ngStyle]="{
+	'background': color, 
+	'color':'white'}">
+	Es de color ROJO
+	</li>
+	<li *ngSwitchCase ="'green'" [ngStyle]="{
+	'background': color, 
+	'color':'white'}">
+	Es de color VERDE
+	</li>
+	<li *ngSwitchCase ="'blue'" [ngStyle]="{
+	'background': color, 
+	'color':'white'}">
+	Es de color AZUL
+	</li>
+</ul>
+<hr/>
+
+<h3>Uso de directivas bidireccionales </h3>
+Selector de colores
+<button (click)="logColorSeleccionado()"> Mostrar log</button>
+<input type = "text" [(ngModel)]="color_seleccionado"/>
+	<pre>
+	Color elegido
+	{{color_seleccionado}}
+	</pre>
+<div [ngStyle]= "{'background':color_seleccionado,
+	'width': '200px',
+	'height': '200px',
+	'float':'right'
+	}">
+</div>
+
+<div style = "clear:both">
+	
+</div>
